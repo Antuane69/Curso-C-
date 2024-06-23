@@ -4,6 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.IO;
+using System.Threading;
+using System.Net.Http;
 
 namespace Primer_Proyecto
 {
@@ -215,9 +219,314 @@ namespace Primer_Proyecto
                 default:
                     Console.WriteLine("Dia invalido");
                     break;
-            }*/
+            }
 
             //Ciclos
+            Console.Write("Que quieres repetir: ");
+            string aux = Console.ReadLine(); 
+            Console.Write("Cuantas veces quieres que se diga " + aux + ": ");
+            int var = Convert.ToInt32(Console.ReadLine());
+
+            if(var <= 0)
+            {
+                Console.WriteLine("Eliga otro numero arriba de 0");
+            }
+            else
+            {
+                for (int i = 0; i < var; i++)
+                {
+                    Console.WriteLine(aux);
+                }
+            }
+            int i = 0;
+            while (i < 10)
+            {
+                Console.WriteLine(i);
+                i++;
+            }
+
+            Console.Write("Ingresa el primer numero: ");
+            int numberA = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Ingresa el segundo numero: ");
+            int numberb = Convert.ToInt32(Console.ReadLine());
+
+            int answer = numberA * numberb;
+            Console.Write("El valor de " + numberA + " * " + numberb + ": ");
+            int actualAnswer = 0;
+
+            /*while (answer != actualAnswer) {
+                Console.ReadLine();
+                Console.Write("escribe tu respuesta: ");
+                string answerInput = Console.ReadLine();
+                actualAnswer = Convert.ToInt32(answerInput);
+                if (answer != actualAnswer)
+                {
+                    Console.WriteLine("Casi pero no");
+                }
+                
+                Console.ReadLine();
+            }
+
+            do
+            {
+                Console.Write("escribe tu respuesta: ");
+                string answerInput = Console.ReadLine();
+                actualAnswer = Convert.ToInt32(answerInput);
+                if (answer != actualAnswer)
+                {
+                    Console.WriteLine("Casi pero no");
+                    Console.WriteLine();
+                }
+
+                Console.ReadLine();
+            } while(answer != actualAnswer);
+
+            Console.WriteLine("lo lograste");
+
+            int age = 10;
+            if(age >= 0)
+            {
+                Console.WriteLine("valid");
+            }
+            else
+            {
+                Console.WriteLine("invalid");
+            }
+
+            string result = age >= 10 ? "valid" : "invalid";
+            Console.WriteLine(result);
+
+            //Console.WriteLine(age >= 10 ? "valid" : "invalid");
+
+            //Formatos
+            double value = 10000D / 12.34D;
+
+            Console.WriteLine(value);
+            //Console.WriteLine(string.Format("{0} {1}",value,1000));
+            Console.WriteLine(string.Format("{0:0}",value));
+            Console.WriteLine(string.Format("{0:0.0}",value));
+            Console.WriteLine(string.Format("{0:0.00}",value));
+
+
+            double money = 10D / 3D;
+            Console.WriteLine(money);
+            //Console.WriteLine(string.Format("$10 / $3 = ${0:0.00}",money));
+            Console.WriteLine(money.ToString("C"));
+            Console.WriteLine(money.ToString("C0"));
+            Console.WriteLine(money.ToString("C1"));
+
+            //Console.WriteLine(money.ToString("C",CultureInfo.CurrentCulture));
+            Console.WriteLine(money.ToString("C",CultureInfo.CreateSpecificCulture("en-GB")));
+            Console.WriteLine(money.ToString("C",CultureInfo.CreateSpecificCulture("en-us")));
+            Console.WriteLine(money.ToString("C",CultureInfo.CreateSpecificCulture("en-au")));
+
+            */
+
+            //proteccion de datos
+
+            /*Console.WriteLine("Escribe un numero: ");
+            string numInput = Console.ReadLine();
+            //int num = Convert.ToInt32(numInput);
+            int num = 0;
+
+            bool success = int.TryParse(numInput, out num);
+
+            if (success)
+            {
+                Console.WriteLine(num);
+            }
+            else
+            {
+                Console.WriteLine("Error al convertir");
+            }
+            bool success = true;
+
+            while(success)
+            {
+                Console.WriteLine("Escribe un numero: ");
+                string numInput = Console.ReadLine();
+
+                if (int.TryParse(numInput, out int num))
+                {
+                    success = false;
+                    Console.WriteLine(num);
+                }
+                else
+                {
+                    Console.WriteLine("Error al convertir");
+                }
+            }
+
+            Console.WriteLine("Escribe un numero: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+
+            for(int i = 1; i <= 10; i++) 
+            {
+                Console.WriteLine("{0} x {1} = {2}", i, number, i * number);
+            }
+
+            //Fizzbuzz practica
+            for(int i = 1; i <= 15; i++)
+            {
+               if(i % 3 == 0 && i % 5 == 0) {
+                    Console.WriteLine("FizzBuzz");
+               }
+               else if(i % 3 == 0)
+               {
+                   Console.WriteLine("Fizz");
+               }else if(i % 5 == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            }
+
+            //Verbatim \t \n \ \\  \"
+            string speech = "He said \"somenting\"" + "\n";
+            Console.WriteLine(speech);
+
+            string path = @"C:\\user\\documents\\c";
+            Console.WriteLine(path);
+
+            string name = @"hola ""adios""";
+            Console.WriteLine(name);
+
+            string name2 = "hola 'antuane'";
+            Console.WriteLine(name2);
+
+            //formateo compuesto
+            string name = "antuane";
+            int age = 23;
+
+            Console.WriteLine("Nombre: " + name);
+            Console.WriteLine("Edad: " + age);
+            Console.WriteLine();
+
+            Console.WriteLine("Nombre: " + name + "\nEdad: " + age);
+            Console.WriteLine("Tu nombre es " + name + ", y tu edad es " + age);
+            Console.WriteLine();
+            Console.WriteLine("Nombre: {0}\nEdad: {1}",name,age);
+            Console.WriteLine("Tu nombre es {0}, y tu edad es {1}",name,age);
+
+            //interpolacion de strings
+
+            string name = "antuane";
+            int age = 23;
+
+            Console.WriteLine($"Tu nombre es {name}, y tu edad es {age}");
+
+            //concatenacion de strings
+            string test = string.Concat("Tu nombre es ", name, " y tu edad es ", age);
+            Console.WriteLine(test);
+
+            string[] names = new string[]
+            {
+                " Antunae"," Test"," Luna"
+            };
+            Console.WriteLine(string.Concat(names));
+
+            //strings vacias
+
+            Console.WriteLine("Escribe tu nombre: ");
+            string name2 = Console.ReadLine();
+
+            if (name2 != string.Empty) {
+                Console.WriteLine($"Tu nombre es {name2}");
+            }
+            else
+            {
+                Console.WriteLine("Nombre vacio");
+            }
+
+            //igualdad de strings
+            string message = "hola";
+            string compare = "hola";
+
+            if(message.Equals(compare)) // message == compare
+            {
+                Console.WriteLine("iguales");
+            }
+            else
+            {
+                Console.WriteLine("diferentes");
+            }
+
+            Console.WriteLine("Escribe tu nombre: ");
+            string nombre = Console.ReadLine();
+
+            if(!nombre.Equals(""))
+            {
+                Console.WriteLine($"tu nombre es {nombre}");
+            }
+            else
+            {
+                Console.WriteLine("nombre invalido");
+            }
+
+            //string iteracion
+            string message = "C# is awesome";
+            //char[] = 
+            //Console.WriteLine(message[1]);
+            //Console.WriteLine(message[15]);
+
+            for(int i = 0;i < message.Length;i++)
+            {
+                Console.Write(message[i]);
+                Thread.Sleep(100);
+            }
+            Console.WriteLine();
+            Console.WriteLine(message.Contains("C"));
+
+            bool contains = false;
+            for(int i = 0;i < message.Length; i++)
+            {
+                if (message[i] == 'C') 
+                { 
+                    contains = true; 
+                    break;
+                }
+            }
+
+            Console.WriteLine(contains);
+
+            //string vacio o nulo
+            Console.WriteLine("Escribe tu nombre: ");
+            string name = Console.ReadLine();
+            //string name = null; 
+
+            Console.WriteLine($"Tu nombre es {name}");
+            if (name != "")
+            {
+                Console.WriteLine("0");
+            }
+
+            //if (!name.Equals(""))
+            //{
+              //  Console.WriteLine("1");
+            //}
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("2");
+            }
+
+            //practica texto nomral y alreves
+            Console.Write("Escribe el mensaje: ");
+            string message = Console.ReadLine();
+
+            for(int i = 0;i< message.Length;i++)
+            {
+                Console.Write(message[i]);
+            }
+            Console.WriteLine();
+            for (int i = message.Length - 1;i >= 0 ;i--)
+            {
+                Console.Write(message[i]);
+            }*/
 
             Console.ReadLine();
         }
