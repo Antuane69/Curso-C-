@@ -526,9 +526,281 @@ namespace Primer_Proyecto
             for (int i = message.Length - 1;i >= 0 ;i--)
             {
                 Console.Write(message[i]);
+            }
+
+            //Practica password checker
+
+            Console.Write("Escribe la contraseña: ");
+            string password = Console.ReadLine();            
+            Console.Write("Escribe la contraseña otra vez: ");
+            string passwordC = Console.ReadLine();
+
+            if (!password.Equals(string.Empty))
+            {
+                if(!passwordC.Equals(string.Empty)) {
+                    if(passwordC.Length >= 6 && password.Length >=6)
+                    {
+                        if (password.Equals(passwordC))
+                        {
+                            Console.WriteLine("Las contrasenias coinciden");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Las contrasenias no coinciden.");
+                        }
+                    }else {
+                            Console.WriteLine("Los tamanios de letra no son mayores a 6");
+                        }
+                }
+                else
+                {
+                    Console.WriteLine("La contraseña es incorrecta");
+                }
+            }
+            else 
+            {
+                Console.WriteLine("Escriba una contrasenia valida.");
             }*/
 
+            //arreglos
+            /*int num1 = 5;
+            int num2 = 10;
+            int num3 = 15;
+
+            int[] numbers = new int[8];*/
+
+            /*Console.Write("Ingresa un numero: ");
+            numbers[0] = Convert.ToInt32(Console.ReadLine());            
+            Console.Write("Ingresa un numero: ");
+            numbers[1] = Convert.ToInt32(Console.ReadLine());            
+            Console.Write("Ingresa un numero: ");
+            numbers[2] = Convert.ToInt32(Console.ReadLine());
+            
+            Console.Write('\n');*/
+
+            //Console.WriteLine($"{num1} {num2} {num3}");
+            //Console.WriteLine($"{numbers[0]} {numbers[1]} {numbers[2]}");
+
+            /*for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write("Ingresa un numero: ");
+                numbers[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.Write($"{numbers[i]} ");
+            }
+            Console.WriteLine();
+            foreach (int num in numbers)
+            {
+                Console.Write($"{num}");
+            }
+
+            int[] angulos = new int[3];
+
+            for (int i = 0; i < angulos.Length; i++)
+            {
+                Console.Write($"Escribe el Angulo{i + 1}: ");
+                angulos[i] = Convert.ToInt32 (Console.ReadLine());
+            }
+
+            int angulosum = 0;
+            foreach (int angulo in angulos)
+            {
+                angulosum += angulo;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(angulosum == 180 ? "Triangulo Valido" : "Triangulo Invalido");
+
+            //Ordenamiento de arreglos
+            int[] numbers = new int[] {
+                9, 2, 7, 4, 5, 6, 1, 0
+            };
+
+            string text = "";
+            text.Replace(" ", "");
+
+            Array.Sort(numbers);
+
+            foreach (int number in numbers)
+            {
+                Console.Write($"{number} ");
+            }
+
+            //Array al reves    
+            int[] numbers = new int[] {
+                0, 2, 7, 4, 5, 6, 7, 9
+            };
+
+            Array.Reverse(numbers);
+            foreach (int i in numbers)
+            {
+                Console.Write($"{i} ");
+            }
+
+            //limpieza de arrays resetea los valores a default
+            int[] numbers = new int[] {
+                0, 2, 7, 4, 5, 6, 7, 9
+            };
+
+            Array.Clear(numbers,4,3);
+
+            foreach (int i in numbers)
+            {
+                Console.Write($"{i} ");
+            }
+
+            //index del array
+
+            int[] numbers = new int[]
+            {
+                90,199,200,67,4
+            };
+
+            Console.Write("Escriba el numero a buscar: ");
+            int search = Convert.ToInt32(Console.ReadLine());
+
+            int position = Array.IndexOf(numbers, search);
+            int position = Array.IndexOf(numbers, search, 2, 3); Posicion de inicio y fin de la busqueda en adelante
+
+            if(position >= 0)
+            {
+                Console.WriteLine($"Numero buscado esta en la posicion {position + 1}");
+            }
+            else
+            {
+                Console.WriteLine("Numero buscado no se encontro");
+            }
+
+            //Listas <>
+            int[] numbers = new int[3]{
+                1,2,3
+            };
+
+            List<int> listNumbers = new List<int>()
+            {
+                1,2,3,4,5,6
+            };
+
+            listNumbers.Add(99);
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Escribe un numero: ");
+                listNumbers.Add(Convert.ToInt32(Console.ReadLine()));
+            }
+            Console.WriteLine();
+            for (int i = 0; i < listNumbers.Count; i++)
+            {
+                Console.Write(listNumbers[i] );
+            }
+            Console.WriteLine();
+            foreach (var item in listNumbers)
+            {
+                Console.WriteLine(item);
+            }
+
+            listNumbers.RemoveAt(6);
+
+            //diccionarios
+            Dictionary<int, string> names = new Dictionary<int, string>()
+            {
+                //keyValuePair
+                {4, "Pepe" },
+                {5, "Luis" },
+            };
+
+            names.Add(1, "antuan");
+            names.Add(2, "alex");
+            names.Add(3, "juan");
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                KeyValuePair<int, string> pair = names.ElementAt(i);
+                Console.WriteLine($"{pair.Key} - {pair.Value}");
+            }
+            Console.WriteLine();
+            Dictionary<string, string> teachers = new Dictionary<string, string>()
+            {
+                {"mate","luis" },
+                {"historia","pepe" },
+            };
+
+            //Console.WriteLine(teachers["historia"]);
+            if(teachers.TryGetValue("Historia",out string teacher))
+            {
+                Console.WriteLine(teacher);
+            }
+            else
+            {
+                Console.WriteLine("No encontrado");
+            }
+
+
+            if (teachers.ContainsKey("historia"))
+            {
+                teachers.Remove("historia");
+                for (int i = 0; i < teachers.Count; i++)
+                {
+                    KeyValuePair<string, string> pair = teachers.ElementAt(i);
+                    Console.WriteLine($"{pair.Key} - {pair.Value}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Materia no encontrada");
+            }
+
+            //practica pares e impares
+            List<int> even = new List<int>();
+            List<int> pair = new List<int>();
+
+            for (int i = 0; i <= 20; i++)
+            {
+                if(i % 2 == 0)
+                {
+                    pair.Add(i);
+                }else
+                {
+                    even.Add(i);
+                }
+            }
+
+            foreach (int i in pair)
+            {
+                Console.WriteLine($"Numeros pares: {i}");
+            }
+            Console.WriteLine();
+            foreach (int i in even)
+            {
+                Console.WriteLine($"Numeros impares: {i}");
+            }
+
+            //Arreglo de multiplos
+            int numero = 7;
+            int[] num = new int[5];
+
+            for (int i = 1; i <= num.Length; i++)
+            {
+                num[i - 1] = numero * i;
+            }
+
+            for (int i = 1; i <= num.Length; i++)
+            {
+                Console.WriteLine($"El valor de {numero} * {i} es: {numero * i}");
+            }*/
+
+            //Funciones
+            Hola();
+
             Console.ReadLine();
+        }
+
+        static void Hola()
+        {
+            Console.WriteLine("Hola Antuane");
         }
     }
 }
